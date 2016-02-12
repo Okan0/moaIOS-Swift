@@ -16,19 +16,49 @@ class LoginView : UIViewController {
     @IBOutlet weak var LoginButton: UIButton!
     @IBOutlet weak var RegButton: UIButton!
     
-    var Hostadresse = String()
+    var host = String()
+    private var token = String()
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject!) -> Bool {
+        if identifier == "registerSegue" || identifier == "loginSegue" {
+            
+            if (NameField.text!.isEmpty || PasswField.text!.isEmpty) {
+                let alert=UIAlertController(title: "Fehlende Login-Daten", message: "Bitte geben Sie sowohl einen Username, als auch ein Passwort ein!", preferredStyle: UIAlertControllerStyle.Alert);
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil));
+                showViewController(alert, sender: self);
+                
+                return false
+            }
+            var temp=NameField.text!+":"+PasswField.text!
+            var data = temp.dataUsingEncoding(NSUTF8StringEncoding)
+            let temptoken = data?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
+            if identifier == "registerSegue"{
+                temp="register:register"
+                data=temp.dataUsingEncoding(NSUTF8StringEncoding)
+                //TODO überprüfen ob registriert werden kann
+            }
+            else{
+                //TODO überprüfen ob eingelogt werden kann
+            }
+            token = temptoken!
+            return true
+        }
+        
+        // by default, transition
+        return true
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "hostForward") {
+            let menu = segue.destinationViewController as! MenueView
+            menu.host = host
+            menu.token = token
+            
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        let url = NSURL(string: "http://192.168.137.1:8443/MoaIosBeer/rest/v1.01/users")
-        
-        let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
-            print(NSString(data: data!, encoding: NSUTF8StringEncoding))
-        }
-        
-        task.resume()
     }
     
     

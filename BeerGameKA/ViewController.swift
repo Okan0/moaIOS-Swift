@@ -8,7 +8,6 @@
 
 import UIKit
 import Alamofire
-import JSONLib
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -34,7 +33,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return cell
     }
     
-    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         host.text = ips[indexPath.row]
         print(ips[indexPath.row])
     }
@@ -44,6 +43,34 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         print("Start")
         myTableView.dataSource=self
         myTableView.delegate=self
+    }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject!) -> Bool {
+        if identifier == "hostForward" {
+            
+            if (host.text!.isEmpty) {
+                let alert=UIAlertController(title: "Keine IP", message: "Bitte geben Sie eine IP-Adresse ein", preferredStyle: UIAlertControllerStyle.Alert);
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil));
+                showViewController(alert, sender: self);
+                
+                return false
+            }
+                
+            else {
+                return true
+            }
+        }
+        
+        // by default, transition
+        return true
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "hostForward") {
+            let login = segue.destinationViewController as! LoginView
+            login.host = host.text!
+            
+        }
     }
 
     var ips = ["192.168.137.1","192.168.173.1"]

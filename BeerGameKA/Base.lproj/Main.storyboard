@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--BeerGame-->
@@ -18,20 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z6N-FS-BxR">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
-                                <items>
-                                    <navigationItem title="BeerGame" id="wPB-ke-ZI1">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="PAb-ic-5yq">
-                                            <connections>
-                                                <segue destination="Cna-Ex-5LE" kind="show" id="I5b-5M-BiO"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d1C-qx-qKA">
-                                <rect key="frame" x="20" y="158" width="560" height="128"/>
+                                <rect key="frame" x="20" y="161" width="560" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="G87-zC-W41"/>
@@ -48,7 +37,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="530" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -57,34 +46,52 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Hostadresse:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gzS-Uz-T5p">
-                                <rect key="frame" x="20" y="91" width="119" height="21"/>
+                                <rect key="frame" x="20" y="91" width="119" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mSQ-AW-C5F">
-                                <rect key="frame" x="20" y="120" width="560" height="30"/>
+                                <rect key="frame" x="20" y="123" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z6N-FS-BxR">
+                                <rect key="frame" x="-1" y="20" width="602" height="44"/>
+                                <items>
+                                    <navigationItem title="BeerGame" id="wPB-ke-ZI1">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="PAb-ic-5yq">
+                                            <connections>
+                                                <segue destination="Cna-Ex-5LE" kind="show" identifier="hostForward" id="I5b-5M-BiO"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="mSQ-AW-C5F" firstAttribute="top" secondItem="gzS-Uz-T5p" secondAttribute="bottom" constant="8" id="3UI-GW-3ZO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="mSQ-AW-C5F" secondAttribute="trailing" id="5QB-Ib-CfI"/>
-                            <constraint firstItem="z6N-FS-BxR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="69e-J5-Dyf"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="mSQ-AW-C5F" secondAttribute="leading" id="AeL-VT-Vid"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="d1C-qx-qKA" secondAttribute="bottom" constant="314" id="EX9-1g-ezw"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="gzS-Uz-T5p" secondAttribute="leading" id="FcC-zC-14d"/>
-                            <constraint firstItem="d1C-qx-qKA" firstAttribute="top" secondItem="mSQ-AW-C5F" secondAttribute="bottom" constant="8" symbolic="YES" id="Gsc-Fa-Q71"/>
-                            <constraint firstItem="gzS-Uz-T5p" firstAttribute="top" secondItem="z6N-FS-BxR" secondAttribute="bottom" constant="27" id="INt-7t-6zI"/>
-                            <constraint firstItem="z6N-FS-BxR" firstAttribute="centerX" secondItem="mSQ-AW-C5F" secondAttribute="centerX" id="M5I-Lu-Ysv"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="d1C-qx-qKA" secondAttribute="leading" id="Rrb-Ll-VnQ"/>
-                            <constraint firstItem="z6N-FS-BxR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="gTJ-hw-Akb"/>
-                            <constraint firstItem="d1C-qx-qKA" firstAttribute="top" secondItem="mSQ-AW-C5F" secondAttribute="bottom" constant="8" id="kAK-Un-AqH"/>
-                            <constraint firstItem="d1C-qx-qKA" firstAttribute="top" secondItem="mSQ-AW-C5F" secondAttribute="bottom" constant="8" id="yaP-LQ-9ab"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="d1C-qx-qKA" secondAttribute="trailing" id="zJf-qx-kjn"/>
+                            <constraint firstItem="z6N-FS-BxR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-21" id="9Uh-VJ-qtR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="d1C-qx-qKA" secondAttribute="trailing" id="HBT-pi-Iw7"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="gzS-Uz-T5p" secondAttribute="leading" id="Jms-dd-c9k"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="z6N-FS-BxR" secondAttribute="trailing" id="RGr-jT-c95"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="mSQ-AW-C5F" secondAttribute="leading" id="V5x-Ud-Sv5"/>
+                            <constraint firstItem="mSQ-AW-C5F" firstAttribute="top" secondItem="gzS-Uz-T5p" secondAttribute="bottom" constant="8" id="c8Q-34-E8v"/>
+                            <constraint firstItem="z6N-FS-BxR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-21" id="d27-OI-ruq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="z6N-FS-BxR" secondAttribute="trailing" constant="-21" id="eJV-QZ-Ny4"/>
+                            <constraint firstItem="d1C-qx-qKA" firstAttribute="top" secondItem="mSQ-AW-C5F" secondAttribute="bottom" constant="8" id="hSs-MX-mpd"/>
+                            <constraint firstItem="gzS-Uz-T5p" firstAttribute="top" secondItem="z6N-FS-BxR" secondAttribute="bottom" constant="27" id="ist-dZ-Z9x"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="z6N-FS-BxR" secondAttribute="trailing" constant="-21" id="ixc-jt-yZc"/>
+                            <constraint firstItem="z6N-FS-BxR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="mRz-fN-6Jh"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="d1C-qx-qKA" secondAttribute="leading" id="omf-Os-MvG"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mSQ-AW-C5F" secondAttribute="trailing" id="tDS-jK-RTd"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="RGr-jT-c95"/>
+                                <exclude reference="ixc-jt-yZc"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="host" destination="mSQ-AW-C5F" id="vcz-Gc-Sm8"/>
@@ -107,16 +114,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hMi-KA-8dz">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hMi-KA-8dz">
+                                <rect key="frame" x="-1" y="20" width="602" height="44"/>
                                 <items>
                                     <navigationItem title="Menü" id="Uj3-4m-j5J">
                                         <barButtonItem key="backBarButtonItem" title="⇠" id="Ufj-WF-dqT"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Logout" id="E4u-uF-wBD">
+                                            <connections>
+                                                <segue destination="Cna-Ex-5LE" kind="show" id="jo6-Cl-oJS"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXf-ni-lZp">
+                                <rect key="frame" x="244" y="149" width="113" height="30"/>
+                                <state key="normal" title="Spiel Beitreten"/>
+                                <connections>
+                                    <segue destination="TJz-76-hCa" kind="show" id="42H-tH-BeH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2m5-rD-8Gq">
+                                <rect key="frame" x="244" y="187" width="113" height="30"/>
+                                <state key="normal" title="Meine Spiele"/>
+                                <connections>
+                                    <segue destination="2NE-zK-mnM" kind="show" id="gwe-Ov-ztU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sA1-Il-RHl">
+                                <rect key="frame" x="244" y="104" width="113" height="30"/>
+                                <state key="normal" title="Spiel erstellen"/>
+                                <connections>
+                                    <segue destination="Kxn-Ig-jgc" kind="show" id="aBy-bk-qLh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="iXf-ni-lZp" secondAttribute="trailing" constant="223" id="3DB-33-9k0"/>
+                            <constraint firstItem="2m5-rD-8Gq" firstAttribute="top" secondItem="iXf-ni-lZp" secondAttribute="bottom" constant="8" id="3Dt-IA-t9l"/>
+                            <constraint firstItem="iXf-ni-lZp" firstAttribute="top" secondItem="sA1-Il-RHl" secondAttribute="bottom" constant="15" id="49G-If-JIr"/>
+                            <constraint firstItem="hMi-KA-8dz" firstAttribute="top" secondItem="B0L-cC-Fqz" secondAttribute="bottom" id="Bgm-BT-oNU"/>
+                            <constraint firstItem="iXf-ni-lZp" firstAttribute="leading" secondItem="FDl-Ps-avA" secondAttribute="leadingMargin" constant="224" id="Eep-eL-l3q"/>
+                            <constraint firstItem="sA1-Il-RHl" firstAttribute="leading" secondItem="FDl-Ps-avA" secondAttribute="leadingMargin" constant="224" id="Ge5-LM-n3j"/>
+                            <constraint firstItem="sA1-Il-RHl" firstAttribute="top" secondItem="hMi-KA-8dz" secondAttribute="bottom" constant="40" id="PtI-xk-xhg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2m5-rD-8Gq" secondAttribute="trailing" constant="223" id="aOJ-PD-M0x"/>
+                            <constraint firstItem="hMi-KA-8dz" firstAttribute="leading" secondItem="FDl-Ps-avA" secondAttribute="leadingMargin" constant="-21" id="bsg-nJ-HPe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="sA1-Il-RHl" secondAttribute="trailing" constant="223" id="fZ2-x4-ady"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hMi-KA-8dz" secondAttribute="trailing" constant="-21" id="oX0-po-Fjb"/>
+                            <constraint firstItem="2m5-rD-8Gq" firstAttribute="leading" secondItem="FDl-Ps-avA" secondAttribute="leadingMargin" constant="224" id="sIo-fv-KtQ"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vm4-3J-nhY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -140,6 +187,18 @@
                                 <items>
                                     <navigationItem title="Spiel erstellen" id="f8U-75-nMt">
                                         <barButtonItem key="backBarButtonItem" title="⇠" id="hSv-OU-syQ"/>
+                                        <leftBarButtonItems>
+                                            <barButtonItem title="Back" id="JN3-ig-QTV">
+                                                <connections>
+                                                    <segue destination="dQ7-LT-wJA" kind="show" id="46s-YV-OzA"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Logout" id="Y7l-kX-NPI">
+                                                <connections>
+                                                    <segue destination="Cna-Ex-5LE" kind="show" id="UqR-Sg-dVD"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -168,6 +227,18 @@
                                 <items>
                                     <navigationItem title="Spiel beitreten" id="LBh-mZ-sPt">
                                         <barButtonItem key="backBarButtonItem" title="⇠" id="yQq-Jw-QVd"/>
+                                        <leftBarButtonItems>
+                                            <barButtonItem title="Back" id="VmH-gT-MZ8">
+                                                <connections>
+                                                    <segue destination="dQ7-LT-wJA" kind="show" id="Q5J-DS-fkZ"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Logout" id="c9S-Rj-xP4">
+                                                <connections>
+                                                    <segue destination="Cna-Ex-5LE" kind="show" id="ADn-W7-1Sj"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -196,6 +267,18 @@
                                 <items>
                                     <navigationItem title="Meine Spiele" id="fzw-Y3-D1D">
                                         <barButtonItem key="backBarButtonItem" title="⇠" id="Gdj-9f-pCx"/>
+                                        <leftBarButtonItems>
+                                            <barButtonItem title="Back" id="sbN-dn-DFU">
+                                                <connections>
+                                                    <segue destination="dQ7-LT-wJA" kind="show" id="6zF-lX-Fr6"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem title="Logout" id="TH8-m1-r59">
+                                                <connections>
+                                                    <segue destination="Cna-Ex-5LE" kind="show" id="jeL-eJ-kcf"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </leftBarButtonItems>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -259,11 +342,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wjd-LW-pcq">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wjd-LW-pcq">
+                                <rect key="frame" x="-1" y="20" width="602" height="44"/>
                                 <items>
                                     <navigationItem title="Login" id="RAd-pp-WcA">
-                                        <barButtonItem key="backBarButtonItem" title="⇠" id="djh-IL-BrJ"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="zvJ-Cv-9bF">
+                                            <connections>
+                                                <segue destination="BYZ-38-t0r" kind="show" id="1hv-HB-tTK"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -275,17 +362,23 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b0V-Gi-w64">
                                 <rect key="frame" x="438" y="220" width="38" height="30"/>
                                 <state key="normal" title="Login"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcd-03-ael">
-                                <rect key="frame" x="497" y="220" width="83" height="30"/>
-                                <size key="titleShadowOffset" width="2.2250738585072014e-308" height="2.2250738585072014e-308"/>
-                                <state key="normal" title="Registrieren"/>
+                                <connections>
+                                    <segue destination="dQ7-LT-wJA" kind="show" identifier="loginSegue" id="A3b-XQ-4gB"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5HY-0c-i17">
                                 <rect key="frame" x="127" y="170" width="453" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcd-03-ael">
+                                <rect key="frame" x="497" y="220" width="83" height="30"/>
+                                <size key="titleShadowOffset" width="2.2250738585072014e-308" height="2.2250738585072014e-308"/>
+                                <state key="normal" title="Registrieren"/>
+                                <connections>
+                                    <segue destination="dQ7-LT-wJA" kind="show" identifier="registerSegue" id="Hpr-Hq-Quc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -294,6 +387,7 @@
                             <constraint firstItem="VvX-r9-5MI" firstAttribute="leading" secondItem="ozE-dr-0s4" secondAttribute="leadingMargin" constant="14" id="AO1-65-hNz"/>
                             <constraint firstItem="zr0-e2-9jV" firstAttribute="leading" secondItem="ozE-dr-0s4" secondAttribute="leadingMargin" constant="39" id="I5u-8X-i25"/>
                             <constraint firstItem="VvX-r9-5MI" firstAttribute="top" secondItem="zr0-e2-9jV" secondAttribute="bottom" constant="39" id="Icd-fl-SDE"/>
+                            <constraint firstItem="Wjd-LW-pcq" firstAttribute="leading" secondItem="ozE-dr-0s4" secondAttribute="leadingMargin" constant="-21" id="J36-5c-RjW"/>
                             <constraint firstItem="5HY-0c-i17" firstAttribute="top" secondItem="qN0-Kz-bcM" secondAttribute="bottom" constant="29" id="ODX-KJ-sZ9"/>
                             <constraint firstItem="5HY-0c-i17" firstAttribute="leading" secondItem="VvX-r9-5MI" secondAttribute="trailing" constant="18" id="PsY-t7-GgF"/>
                             <constraint firstItem="rcd-03-ael" firstAttribute="top" secondItem="5HY-0c-i17" secondAttribute="bottom" constant="20" id="TzL-9E-F9v"/>
@@ -301,13 +395,13 @@
                             <constraint firstItem="rcd-03-ael" firstAttribute="leading" secondItem="b0V-Gi-w64" secondAttribute="trailing" constant="21" id="b97-8t-emE"/>
                             <constraint firstItem="qN0-Kz-bcM" firstAttribute="top" secondItem="Da9-OK-wal" secondAttribute="bottom" constant="91" id="oQB-3E-ssQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qN0-Kz-bcM" secondAttribute="trailing" id="rSk-aN-NXH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Wjd-LW-pcq" secondAttribute="trailing" constant="-21" id="vyk-6O-0Bl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rcd-03-ael" secondAttribute="trailing" id="wuS-wg-OPA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5HY-0c-i17" secondAttribute="trailing" id="xW9-oz-zV4"/>
+                            <constraint firstItem="Wjd-LW-pcq" firstAttribute="top" secondItem="Da9-OK-wal" secondAttribute="bottom" id="yqQ-nw-cTu"/>
                         </constraints>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="BfI-jI-U1T"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="LoginButton" destination="b0V-Gi-w64" id="7TD-DM-q7C"/>
@@ -321,4 +415,8 @@
             <point key="canvasLocation" x="1397" y="507"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="jo6-Cl-oJS"/>
+        <segue reference="Hpr-Hq-Quc"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -10,7 +10,8 @@ import UIKit
 import Alamofire
 
 class MenueView : UIViewController {
-    
+    var host=String()
+    var token=String()
     
 
 }
