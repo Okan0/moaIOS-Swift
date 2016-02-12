@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		52601EAC1C6DE66400B9375D /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52601EAB1C6DE66400B9375D /* SwiftyJSON.swift */; };
+		52601EB51C6DFEB500B9375D /* IPTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52601EB41C6DFEB500B9375D /* IPTableView.swift */; };
 		5266BDB81C6C8C8000E36C15 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266BDB71C6C8C8000E36C15 /* LoginView.swift */; };
 		5266BF1C1C6CC5B400E36C15 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5266BF0F1C6CC53200E36C15 /* Alamofire.framework */; };
 		5266BF1D1C6CC5B400E36C15 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5266BF0F1C6CC53200E36C15 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -98,6 +99,7 @@
 
 /* Begin PBXFileReference section */
 		52601EAB1C6DE66400B9375D /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = "SwiftyJSON-master/Source/SwiftyJSON.swift"; sourceTree = SOURCE_ROOT; };
+		52601EB41C6DFEB500B9375D /* IPTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPTableView.swift; sourceTree = "<group>"; };
 		5266BDB71C6C8C8000E36C15 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		5266BF041C6CC53100E36C15 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		52E43C681C6B4B2100C18D2A /* BeerGameKA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerGameKA.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,6 +175,7 @@
 				52E43C741C6B4B2100C18D2A /* LaunchScreen.storyboard */,
 				52E43C771C6B4B2100C18D2A /* Info.plist */,
 				52601EAB1C6DE66400B9375D /* SwiftyJSON.swift */,
+				52601EB41C6DFEB500B9375D /* IPTableView.swift */,
 			);
 			path = BeerGameKA;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 			files = (
 				52E43C6E1C6B4B2100C18D2A /* ViewController.swift in Sources */,
 				52E43CEF1C6B8B4900C18D2A /* myGames.swift in Sources */,
+				52601EB51C6DFEB500B9375D /* IPTableView.swift in Sources */,
 				52E43CF11C6B8B7300C18D2A /* Playsheet.swift in Sources */,
 				52E43CEB1C6B8B0000C18D2A /* createGame.swift in Sources */,
 				52E43CE11C6B7BDD00C18D2A /* MenueView.swift in Sources */,
