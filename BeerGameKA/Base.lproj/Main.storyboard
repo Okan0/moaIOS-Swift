@@ -713,11 +713,6 @@
                                     <segue destination="dQ7-LT-wJA" kind="show" identifier="loginSegue" id="A3b-XQ-4gB"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5HY-0c-i17">
-                                <rect key="frame" x="127" y="170" width="453" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcd-03-ael">
                                 <rect key="frame" x="497" y="220" width="83" height="30"/>
                                 <size key="titleShadowOffset" width="2.2250738585072014e-308" height="2.2250738585072014e-308"/>
@@ -726,6 +721,11 @@
                                     <segue destination="dQ7-LT-wJA" kind="show" identifier="registerSegue" id="Hpr-Hq-Quc"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5HY-0c-i17">
+                                <rect key="frame" x="127" y="170" width="453" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -765,7 +765,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="jeL-eJ-kcf"/>
         <segue reference="A9J-al-yC5"/>
-        <segue reference="6zF-lX-Fr6"/>
+        <segue reference="Hpr-Hq-Quc"/>
         <segue reference="Z4C-ak-Nd2"/>
     </inferredMetricsTieBreakers>
 </document>
