@@ -48,10 +48,10 @@ class myGames : UIViewController, UITableViewDataSource, UITableViewDelegate {
             temp.gameId = gameId
         }
         else if(segue.identifier == "gameIsFullSegue"){
-            let temp = segue.destinationViewController as! Playsheet
-            temp.host = host
-            temp.token = token
-            temp.gameId = gameId
+//            let temp = segue.destinationViewController as! Playsheet
+//            temp.host = host
+//            temp.token = token
+//            temp.gameId = gameId
         }
     }
     
