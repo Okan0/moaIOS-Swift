@@ -19,6 +19,8 @@ class LoginView : UIViewController {
     var host = String()
     private var token = String()
     
+    //Diese Funktion wird ausgeführt, wenn eine andere View aufgerufen werden soll und...
+    //...überprüft ob dies erlaubt ist oder nicht
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject!) -> Bool {
         if identifier == "registerSegue" || identifier == "loginSegue" {
             
@@ -36,18 +38,22 @@ class LoginView : UIViewController {
                 temp="register:register"
                 data=temp.dataUsingEncoding(NSUTF8StringEncoding)
                 //TODO überprüfen ob registriert werden kann
+                //  OK    -> /
+                //  Sonst -> return false
             }
             else{
                 //TODO überprüfen ob eingelogt werden kann
+                //  OK    -> /
+                //  Sonst -> return false
             }
             token = temptoken!
             return true
         }
-        
-        // by default, transition
         return true
     }
     
+    //Diese Funktion wird ausgeführt, wenn eine andere View aufgerufen werden soll und...
+    //...die Überprüfung erfolgreich war.
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "hostForward") {
             let menu = segue.destinationViewController as! MenueView
@@ -56,10 +62,4 @@ class LoginView : UIViewController {
             
         }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    
 }

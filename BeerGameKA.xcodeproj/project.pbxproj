@@ -25,6 +25,10 @@
 		52E43CEF1C6B8B4900C18D2A /* myGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E43CEE1C6B8B4900C18D2A /* myGames.swift */; };
 		52E43CF11C6B8B7300C18D2A /* Playsheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E43CF01C6B8B7300C18D2A /* Playsheet.swift */; };
 		52E9ACBA1C70B05E0082D72F /* Test_richtext.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 52E9ACB91C70B05E0082D72F /* Test_richtext.rtf */; };
+		52E9C7ED1C70C5D700061A61 /* chooseRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E9C7EC1C70C5D700061A61 /* chooseRole.swift */; };
+		52E9C7F11C70D1B500061A61 /* listOpenGamesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E9C7F01C70D1B500061A61 /* listOpenGamesCell.swift */; };
+		52E9C7F31C7113E900061A61 /* listMyGamesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E9C7F21C7113E900061A61 /* listMyGamesCell.swift */; };
+		52E9C7F51C7118A500061A61 /* wait4Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E9C7F41C7118A500061A61 /* wait4Player.swift */; };
 		52EF687D1C6F6D7400D929FA /* einkaufswagen.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EF68791C6F6D7400D929FA /* einkaufswagen.png */; };
 		52EF68801C6F6D7400D929FA /* lorry_green_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EF687C1C6F6D7400D929FA /* lorry_green_64.png */; };
 /* End PBXBuildFile section */
@@ -122,6 +126,10 @@
 		52E43CEE1C6B8B4900C18D2A /* myGames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myGames.swift; sourceTree = "<group>"; };
 		52E43CF01C6B8B7300C18D2A /* Playsheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playsheet.swift; sourceTree = "<group>"; };
 		52E9ACB91C70B05E0082D72F /* Test_richtext.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Test_richtext.rtf; sourceTree = "<group>"; };
+		52E9C7EC1C70C5D700061A61 /* chooseRole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chooseRole.swift; sourceTree = "<group>"; };
+		52E9C7F01C70D1B500061A61 /* listOpenGamesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = listOpenGamesCell.swift; sourceTree = "<group>"; };
+		52E9C7F21C7113E900061A61 /* listMyGamesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = listMyGamesCell.swift; sourceTree = "<group>"; };
+		52E9C7F41C7118A500061A61 /* wait4Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = wait4Player.swift; sourceTree = "<group>"; };
 		52EF68791C6F6D7400D929FA /* einkaufswagen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = einkaufswagen.png; sourceTree = "<group>"; };
 		52EF687C1C6F6D7400D929FA /* lorry_green_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lorry_green_64.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -191,6 +199,10 @@
 				528419081C6F749D0029EE13 /* wholesale.png */,
 				52EF687C1C6F6D7400D929FA /* lorry_green_64.png */,
 				52E9ACB91C70B05E0082D72F /* Test_richtext.rtf */,
+				52E9C7EC1C70C5D700061A61 /* chooseRole.swift */,
+				52E9C7F01C70D1B500061A61 /* listOpenGamesCell.swift */,
+				52E9C7F21C7113E900061A61 /* listMyGamesCell.swift */,
+				52E9C7F41C7118A500061A61 /* wait4Player.swift */,
 			);
 			path = BeerGameKA;
 			sourceTree = "<group>";
@@ -331,12 +343,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52E9C7ED1C70C5D700061A61 /* chooseRole.swift in Sources */,
 				52E43C6E1C6B4B2100C18D2A /* ViewController.swift in Sources */,
 				52E43CEF1C6B8B4900C18D2A /* myGames.swift in Sources */,
 				52601EB51C6DFEB500B9375D /* IPTableView.swift in Sources */,
 				52E43CF11C6B8B7300C18D2A /* Playsheet.swift in Sources */,
+				52E9C7F11C70D1B500061A61 /* listOpenGamesCell.swift in Sources */,
+				52E9C7F51C7118A500061A61 /* wait4Player.swift in Sources */,
 				52E43CEB1C6B8B0000C18D2A /* createGame.swift in Sources */,
 				52E43CE11C6B7BDD00C18D2A /* MenueView.swift in Sources */,
+				52E9C7F31C7113E900061A61 /* listMyGamesCell.swift in Sources */,
 				52E43CED1C6B8B2800C18D2A /* joinGame.swift in Sources */,
 				52601EAC1C6DE66400B9375D /* SwiftyJSON.swift in Sources */,
 				5266BDB81C6C8C8000E36C15 /* LoginView.swift in Sources */,
