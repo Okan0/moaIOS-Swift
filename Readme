@@ -1,0 +1,10 @@
+Damit git die von Mac Osx angelegten Dateien der endung .DS_Store Ignoriert, muss das git ignorefile um Folgendes ergänzzt werden:
+
+## Ignore Mac .DS_Store files
+.DS_Store
+*.DS_Store
+*/*.DS_Store
+
+
+Hat man bereits ein solches File im Localen Repo so cann dies mit:
+$ git rm -f *.DS_Store    vom index entfernt werden
