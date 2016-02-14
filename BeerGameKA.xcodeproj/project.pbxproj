@@ -24,6 +24,7 @@
 		52E43CED1C6B8B2800C18D2A /* joinGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E43CEC1C6B8B2800C18D2A /* joinGame.swift */; };
 		52E43CEF1C6B8B4900C18D2A /* myGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E43CEE1C6B8B4900C18D2A /* myGames.swift */; };
 		52E43CF11C6B8B7300C18D2A /* Playsheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E43CF01C6B8B7300C18D2A /* Playsheet.swift */; };
+		52E9ACBA1C70B05E0082D72F /* Test_richtext.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 52E9ACB91C70B05E0082D72F /* Test_richtext.rtf */; };
 		52EF687D1C6F6D7400D929FA /* einkaufswagen.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EF68791C6F6D7400D929FA /* einkaufswagen.png */; };
 		52EF68801C6F6D7400D929FA /* lorry_green_64.png in Resources */ = {isa = PBXBuildFile; fileRef = 52EF687C1C6F6D7400D929FA /* lorry_green_64.png */; };
 /* End PBXBuildFile section */
@@ -120,6 +121,7 @@
 		52E43CEC1C6B8B2800C18D2A /* joinGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = joinGame.swift; sourceTree = "<group>"; };
 		52E43CEE1C6B8B4900C18D2A /* myGames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myGames.swift; sourceTree = "<group>"; };
 		52E43CF01C6B8B7300C18D2A /* Playsheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playsheet.swift; sourceTree = "<group>"; };
+		52E9ACB91C70B05E0082D72F /* Test_richtext.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Test_richtext.rtf; sourceTree = "<group>"; };
 		52EF68791C6F6D7400D929FA /* einkaufswagen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = einkaufswagen.png; sourceTree = "<group>"; };
 		52EF687C1C6F6D7400D929FA /* lorry_green_64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lorry_green_64.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -188,6 +190,7 @@
 				528419071C6F749D0029EE13 /* factory.png */,
 				528419081C6F749D0029EE13 /* wholesale.png */,
 				52EF687C1C6F6D7400D929FA /* lorry_green_64.png */,
+				52E9ACB91C70B05E0082D72F /* Test_richtext.rtf */,
 			);
 			path = BeerGameKA;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				52EF68801C6F6D7400D929FA /* lorry_green_64.png in Resources */,
 				52E43C731C6B4B2100C18D2A /* Assets.xcassets in Resources */,
 				528419091C6F749D0029EE13 /* factory.png in Resources */,
+				52E9ACBA1C70B05E0082D72F /* Test_richtext.rtf in Resources */,
 				52E43C711C6B4B2100C18D2A /* Main.storyboard in Resources */,
 				5284190A1C6F749D0029EE13 /* wholesale.png in Resources */,
 			);
