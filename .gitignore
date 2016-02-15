@@ -11,6 +11,7 @@ DerivedData
 **/.DS_Store
 *.DS_Store
 
+
 ## Various settings
 *.pbxuser
 !default.pbxuser
@@ -23,9 +24,13 @@ DerivedData
 xcuserdata
 
 ## Other
+.xcuserstate
+*.xcuserstate
+*/*.xcuserstate
+**/.xcuserstate
+**/.xcuserstate
 *.xccheckout
 *.moved-aside
-*.xcuserstate
 *.xcscmblueprint
 
 ## Obj-C/Swift specific
