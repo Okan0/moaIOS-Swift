@@ -28,32 +28,41 @@ static let Con: Alamofire.Manager = {
                             )
   }()
 
+
   // GET Generisch machen 
-  func doGet(url : String , headers :  [String : String] ) -> results :  [String : String]  {
+  func doGet(url : String , headers :  [String : String] ) -> results : [String: String]  {
     // Rückgabe set 
-    var results :  [String : String]      // 192.168.137.1:8443/MoaIosBeer/
+   var results [String: String]
+                                          // 192.168.137.1:8443/MoaIosBeer/
       HttpClient.Con.request(.GET, "https://"+HttpClient.gethostUrl()+"/rest/v1.01/users", headers: headers).responseJSON {
         
         response in
-            // results.add("status": response.status)
+            // response data
+            results.insert("data",response.Data) 
+            results.insert("status",response.response!.statusCode) 
+            //....
         }
            
              return results
         }
         
         
-     // POST Generisch machen     
-    func doPost(url : String , headers :  [String : String] ) -> results :  [String : String]  {
+    // POST Generisch machen 
+  func doGet(url : String , headers :  [String : String] ) -> results : [String: String]  {
     // Rückgabe set 
-    var results :  [String : String]      // 192.168.137.1:8443/MoaIosBeer/
+   var results [String: String]
+                                          // 192.168.137.1:8443/MoaIosBeer/
       HttpClient.Con.request(.POST, "https://"+HttpClient.gethostUrl()+"/rest/v1.01/users", headers: headers).responseJSON {
         
         response in
-            // results.add("status": response.status)
+            // response data
+            results.insert("data",response.Data) 
+            results.insert("status",response.response!.statusCode) 
+            //....
         }
            
              return results
-        }    
+        }
         
        
  } // Client Ende
