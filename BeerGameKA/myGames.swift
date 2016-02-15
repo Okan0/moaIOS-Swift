@@ -68,14 +68,21 @@ class myGames : UIViewController, UITableViewDataSource, UITableViewDelegate {
         cell.gameName.text = games[indexPath.row].name
         cell.gameRole.text = games[indexPath.row].role
         
-        if games[indexPath.row].state == 1{
-            cell.backgroundColor = UIColor.orangeColor()
+//        if games[indexPath.row].state == 1{
+//            cell.backgroundColor = UIColor.orangeColor()
+//        }
+//        else if games[indexPath.row].state == 2{
+//            cell.backgroundColor = UIColor.greenColor()
+//        }
+//        else if games[indexPath.row].state == 3{
+//            cell.backgroundColor = UIColor.redColor()
+//        }
+        
+        if games[indexPath.row].state % 2 == 1{
+            cell.backgroundColor = UIColor.lightGrayColor()
         }
-        else if games[indexPath.row].state == 2{
-            cell.backgroundColor = UIColor.greenColor()
-        }
-        else if games[indexPath.row].state == 3{
-            cell.backgroundColor = UIColor.redColor()
+        else{
+            cell.backgroundColor = UIColor.whiteColor()
         }
         
         return cell

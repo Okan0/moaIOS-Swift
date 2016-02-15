@@ -14,7 +14,31 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var host: UITextField!
     @IBOutlet weak var myTableView: UITableView!
-    //Wird fuer die TableView benoetigt
+    
+    
+    let Manager : Alamofire.Manager = {
+        // Create the server trust policies
+        let serverTrustPolicies: [String: ServerTrustPolicy] = [
+            "192.168.137.1": .DisableEvaluation ]
+        //                ,
+        //                "192.168.137.1:8443": .DisableEvaluation,
+        //                "192.168.137.1:8080": .DisableEvaluation,
+        //                "192.168.137.1:80": .DisableEvaluation,
+        //                "192.168.173.1": .DisableEvaluation,
+        //                "192.168.173.1:8443": .DisableEvaluation,
+        //                "192.168.173.1:8080": .DisableEvaluation,
+        //                "192.168.173.1:80": .DisableEvaluation]
+        // Create custom manager
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configuration.HTTPAdditionalHeaders = Alamofire.Manager.defaultHTTPHeaders
+        let man = Alamofire.Manager(
+            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+        )
+        return man
+    }()
+    
+     //Wird fuer die TableView benoetigt
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //Anzahl der Elemente in der TableView
         return ips.count
@@ -45,6 +69,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         print("Start")
         myTableView.dataSource=self
         myTableView.delegate=self
+        
+        
+        
+        
+     
+        
+        
+   
     }
     
     //Diese Funktion wird ausgeführt, wenn eine andere View aufgerufen werden soll und...
@@ -55,12 +87,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 let alert=UIAlertController(title: "Keine IP", message: "Bitte geben Sie eine IP-Adresse ein", preferredStyle: UIAlertControllerStyle.Alert);
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil));
                 showViewController(alert, sender: self);
-                
+
                 return false
             }
+            
+            let headers = ["Authorization": "Basic SWNoOjEyMzQ="]
+            //Manager.request(.GET, "https://192.168.137.1:8443/MoaIosBeer/rest/v1.01/users", headers: headers)
+            Manager.request(.GET, "https://192.168.137.1:8443/MoaIosBeer/rest/v1.01/users", headers: headers)
+                .responseJSON { response in
+                    print(response.request)  // original URL request
+                    print(response.response) // URL response
+                    print(response.data)     // server data
+                    print(response.result)   // result of response serialization
+                    
+                    if let JS = response.result.value {
+                        print("JSON: \(JS)")
+                        
+                    }
+                    
+                    
+            }
+            
+
             //TODO testen ob von der angegebenen Hostadresse eine Antwort kommt oder nicht
             //  OK    -> /
             //  Sonst -> return false
+            
+            
         }
         return true
     }
@@ -77,38 +130,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var ips = ["192.168.137.1","192.168.173.1"]
 }
 
-
-//    private var Manager : Alamofire.Manager = {
-//        // Create the server trust policies
-//        let serverTrustPolicies: [String: ServerTrustPolicy] = [
-//            "192.168.137.1": .DisableEvaluation
-//        ]
-//        // Create custom manager
-//        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-//        configuration.HTTPAdditionalHeaders = Alamofire.Manager.defaultHTTPHeaders
-//        let man = Alamofire.Manager(
-//            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
-//            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
-//        )
-//        return man
-//    }()
-    
+//// Konstante zur Verbindung fuer die Hostconnection
+//let serverTrustPolicies: [String: ServerTrustPolicy] = [
+//    "192.168.137.1:8443": .DisableEvaluation]
+//let headers = ["Authorization": "Basic SWNoOjEyMzQ="]
+//
+//Manager.request(.GET, "https://192.168.173.1:8443/MoaIosBeer", headers: headers)
+//    .responseJSON { response in
+//        print(response.request)  // original URL request
+//        print(response.response) // URL response
+//        print(response.data)     // server data
+//        print(response.result)   // result of response serialization
 //        
-//        let serverTrustPolicies: [String: ServerTrustPolicy] = [
-//        "192.168.137.1:843": .DisableEvaluation]
-//        let headers = ["Authorization": "Basic SWNoOjEyMzQ="]
-//        print("Ich bin dumm!")
-//        Manager.request(.GET, "https://192.168.137.1:8443/MoaIosBeer/rest/v1.01/users", headers: headers)
-//            .responseJSON { response in
-//                print(response.request)  // original URL request
-//                print(response.response) // URL response
-//                print(response.data)     // server data
-//                print(response.result)   // result of response serialization
-//                
-//                if let JS = response.result.value {
-//                    //print("JSON: \(JS)")
-//                    for user in JS.array {
-//                        print("user: \(user)")
-//                    }
-//                }
+//        if let JS = response.result.value {
+//            //print("JSON: \(JS)")
+//            for user in JS.array {
+//                print("user: \(user)")
+//            }
 //        }
+//}
+
+
