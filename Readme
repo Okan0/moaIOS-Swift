@@ -8,3 +8,9 @@ Damit git die von Mac Osx angelegten Dateien der endung .DS_Store Ignoriert, mus
 
 Hat man bereits ein solches File im Localen Repo so cann dies mit:
 $ git rm -f *.DS_Store    vom index entfernt werden
+
+
+
+Json Parsen mit swity JSON und Alamofire
+
+https://www.youtube.com/watch?v=Rqr3w8scm2E Parse Json with Alamofire  ( minute 5:36 => response Handling ) 
