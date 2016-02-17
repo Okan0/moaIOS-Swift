@@ -6,30 +6,43 @@
 //  Copyright © 2016 John. All rights reserved.
 //
 
-import UIKit
+import Alamofire
 
-class HTTPClient: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+class HTTPClient {
+    
+    init(){
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    var hostUrl : String = ""
+    // 192.168.137.1:8443/MoaIosBeer/
+    
+    func sethostUrl (url : String){
+        self.hostUrl = url
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func gethostUrl() -> String{
+        return self.hostUrl
     }
-    */
+    
+    let Con: Alamofire.Manager = {
+        let serverTrustPolicies: [String: ServerTrustPolicy] =  [   "192.168.137.1": .DisableEvaluation,
+            "192.168.137.1:8443": .DisableEvaluation,
+            "192.168.137.1:8080": .DisableEvaluation,
+            "192.168.137.1:80": .DisableEvaluation,
+            "192.168.173.1": .DisableEvaluation,
+            "192.168.173.1:8443": .DisableEvaluation,
+            "192.168.173.1:8080": .DisableEvaluation,
+            "192.168.173.1:80": .DisableEvaluation
+        ]
+        
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configuration.HTTPAdditionalHeaders = Alamofire.Manager.defaultHTTPHeaders
+        
+        return Alamofire.Manager(   configuration: configuration,
+            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
+        )
+    }()
+    
+    
+    
+} // Client Ende
 
-}
