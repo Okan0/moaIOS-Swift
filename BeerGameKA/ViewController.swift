@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
        
@@ -45,6 +46,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         print("Start")
         myTableView.dataSource=self
         myTableView.delegate=self
+        
+        RestClient.headers = ["Authorization": "Basic SWNoOjEyMzQ="]
  
    
     }
@@ -64,11 +67,59 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             
             RestClient.hostUrl = host.text!
-            //let headers = ["Authorization": "Basic SWNoOjEyMzQ="]
             let req = RestClient.connCheck().responseJSON {
                 response in
+            }
+            
+            _ = RestClient.authCheck().responseJSON {
+                response in
+                /*
+                ( Array Beginn          ) Array Ende
+                { Objekt beginn         } Objekt Ende
+                , Seperatorzeichen
+                ----------------------------------------------
+                (
+                    {
+                        id = 1;
+                        password = 1234;
+                        roles = (
+                            {
+                                "role_id" = 1;
+                                rolename = "manager-gui";
+                            },
+                            .......
+                        )
+                    },
+                    ......
+                )
+                ----------------------------------------------
+                */
+                
+                if let value = response.result.value {
+                    
+                    let json = JSON(value)
+                    
+                    for (var i : Int = 0; i < 3; i++ ){
+                    print(json[i, "username"].stringValue)
+                        
+                        
+                            print(json[i, "roles"].arrayValue)
+
+                    }
+                    
+                    
+                    print("---------------------")
+                    
+                    
+                    for (var i : Int = 0; i < 3; i++ ){
+                        print(json[i, "username"]["roles"])
+                    }
+                    
+                    //print("JSON:  \(JSOn)")
+                }
                 
             }
+            
             
             if  req.response?.statusCode != 200 {
                 let alert=UIAlertController(title: "Kein gültige Hostadresse!", message: "Bitte geben Sie eine gültige IP-Adresse ein", preferredStyle: UIAlertControllerStyle.Alert);

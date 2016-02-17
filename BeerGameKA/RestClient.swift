@@ -12,6 +12,9 @@ import Alamofire
 class RestClient {
     
     static var hostUrl : String = ""// Hostadresse ohne Port
+    
+    static var headers : [String : String] = ["" : ""]// Authorization
+    
 
     /*Wichtig Alle Funktionen dieser Klasse die eine Http Verbindung mittels Alamofire aufbauen, sind Asynchron*/
     
@@ -25,7 +28,8 @@ class RestClient {
         while trys != 3 {
             sleep(1)
             if req.response?.statusCode != nil{
-                print("Status Code: \(req.response!.statusCode)  Versuch: \(trys)")
+                print("connCheck(): ")
+                print("Status Code: \(req.response!.statusCode)  Versuch: \(++trys)")
                 break
             }
             else{
@@ -36,14 +40,15 @@ class RestClient {
     }
     
     //TODO Weitere Funktion fuer die benoetigten Rest Calls gegen die API schreiben
-    static func authCheck(headers :  [String : String] ) -> Alamofire.Request{
+    static func authCheck() -> Alamofire.Request{
         
         var trys : Int = 0
-        let req = self.Con.request(.GET, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/users", headers: headers)
+        let req = self.Con.request(.GET, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/users", headers : self.headers)
         while trys != 3 {
             sleep(1)
             if req.response?.statusCode != nil{
-                print("Status Code: \(req.response!.statusCode)  Versuch: \(trys)")
+                print("authCheck(): ")
+                print("Status Code: \(req.response!.statusCode)  Versuch: \(++trys)")
                 break
             }
             else{
@@ -52,6 +57,22 @@ class RestClient {
         }
         return req
     }
+    /*
+    
+    Alamofire.request(.GET, url).validate().responseJSON{ response in
+        switch response.result {
+            case .Success:  // Serverantwort erhalten.
+                if let value = response.result.value{
+                    let json = JSON(value)
+                    print("JSON: \(json)")
+                }
+            case .Failure(let error):   // Server antwortet nicht.
+                print(error)
+        }
+    }
+    
+    */
+    
     
     // Vertrauenswuerdige Server
     static var Con: Alamofire.Manager = {
