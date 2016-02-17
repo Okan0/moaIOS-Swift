@@ -10,33 +10,9 @@ import UIKit
 import Alamofire
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    
+       
     @IBOutlet weak var host: UITextField!
     @IBOutlet weak var myTableView: UITableView!
-    
-    
-    let Manager : Alamofire.Manager = {
-        // Create the server trust policies
-        let serverTrustPolicies: [String: ServerTrustPolicy] = [
-            "192.168.137.1": .DisableEvaluation,
-            "192.168.137.1:8443": .DisableEvaluation,
-            "192.168.137.1:8080": .DisableEvaluation,
-            "192.168.137.1:80": .DisableEvaluation,
-            "192.168.173.1": .DisableEvaluation,
-            "192.168.173.1:8443": .DisableEvaluation,
-            "192.168.173.1:8080": .DisableEvaluation,
-            "192.168.173.1:80": .DisableEvaluation]
-        
-        // Create custom manager
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        configuration.HTTPAdditionalHeaders = Alamofire.Manager.defaultHTTPHeaders
-        let man = Alamofire.Manager(
-            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
-            serverTrustPolicyManager: ServerTrustPolicyManager(policies: serverTrustPolicies)
-        )
-        return man
-    }()
     
      //Wird fuer die TableView benoetigt
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -69,51 +45,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         print("Start")
         myTableView.dataSource=self
         myTableView.delegate=self
+ 
    
     }
-    
-    func get(url : String , headers :  [String : String] ) -> Bool {
-    
-        var hostTest : Bool = false
-        if hostTest == false {
-        
-        Manager.request(.GET, "https://"+url+":8443/MoaIosBeer/rest/v1.01/users", headers: headers).responseJSON {
-    
-            response in
-    
-            let rescode : Int
-            if response.response?.statusCode != nil {
-                rescode  = response.response!.statusCode
-            }
-            else{
-                rescode = 666
-            }
-            //
-            if rescode != 200 {
-                print("!=200 --> ⁄(rescode)")
-                hostTest = false
-            }
-            else if rescode == 200 {
-                print(" =200 -->⁄(rescode)")
-                hostTest = true
-            }
-            
-        }
-           
-            
-        }
-        
-         return hostTest
-       
-    }
-    
     
     //Diese Funktion wird ausgeführt, wenn eine andere View aufgerufen werden soll und...
     //...überprüft ob dies erlaubt ist oder nicht
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject!) -> Bool {
+
         if identifier == "hostForward" {
-            
-            let headers = ["Authorization": "Basic SWNoOjEyMzQ="]
             
             if (host.text!.isEmpty) {
                 let alert=UIAlertController(title: "Keine IP", message: "Bitte geben Sie eine IP-Adresse ein", preferredStyle: UIAlertControllerStyle.Alert);
@@ -122,15 +62,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 
                 return false
             }
-            else if get(host.text!, headers: headers) == false {
+            
+            RestClient.hostUrl = host.text!
+            //let headers = ["Authorization": "Basic SWNoOjEyMzQ="]
+            let req = RestClient.connCheck().responseJSON {
+                response in
+                
+            }
+            
+            if  req.response?.statusCode != 200 {
                 let alert=UIAlertController(title: "Kein gültige Hostadresse!", message: "Bitte geben Sie eine gültige IP-Adresse ein", preferredStyle: UIAlertControllerStyle.Alert);
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil));
                 showViewController(alert, sender: self);
                 
                 return false
             }
-            
-            
+            else{
+                return true
+            }
         }
         return true
     }
@@ -146,25 +95,4 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     var ips = ["192.168.137.1","192.168.173.1"]
 }
-
-//// Konstante zur Verbindung fuer die Hostconnection
-//let serverTrustPolicies: [String: ServerTrustPolicy] = [
-//    "192.168.137.1:8443": .DisableEvaluation]
-//let headers = ["Authorization": "Basic SWNoOjEyMzQ="]
-//
-//Manager.request(.GET, "https://192.168.173.1:8443/MoaIosBeer", headers: headers)
-//    .responseJSON { response in
-//        print(response.request)  // original URL request
-//        print(response.response) // URL response
-//        print(response.data)     // server data
-//        print(response.result)   // result of response serialization
-//        
-//        if let JS = response.result.value {
-//            //print("JSON: \(JS)")
-//            for user in JS.array {
-//                print("user: \(user)")
-//            }
-//        }
-//}
-
 
