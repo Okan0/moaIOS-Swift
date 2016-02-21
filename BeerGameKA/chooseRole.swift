@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class chooseRoleView : UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
     var items = ["Retailer","Wholesaler","Distributor","Factory"]
     var pics = ["einkaufswagen.png","wholesale.png","lorry_green_64.png","factory.png"]
     var selected = -1
+    var closed : [String] = []
     
     var token = String()
     var host = String()
@@ -28,7 +30,18 @@ class chooseRoleView : UIViewController, UICollectionViewDataSource, UICollectio
         
         print("Received-ID  : \(gameID)")
         
-        //TODO myPlaysheet=gameID abfragen, um die verfügbaren Rollen zu erhalten
+        RestClient.getGameInfo(self.gameID).responseJSON{
+            response in
+            
+            if let val = response.result.value
+            {
+                let json = JSON(val)
+                    for (var i : Int = 0; i < json.count; i++ ){
+                        let role = json[i, "Role"].stringValue
+                        self.closed.append(role)
+                    }
+            }
+        }
     }
     
     //Diese Funktion gibt an, wie viele Elemente in der Collection View enthalten sind
@@ -45,7 +58,7 @@ class chooseRoleView : UIViewController, UICollectionViewDataSource, UICollectio
         let origImage = UIImage(named: pics[indexPath.row]);
         
         //TODO falls die rolle vergeben ist...
-        if indexPath.row%2==0 {
+        if closed.contains(items[indexPath.row]) {
             let tintedImage = origImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
             cell.myImage.image = tintedImage
             cell.myImage.tintColor = UIColor.grayColor()
@@ -92,9 +105,7 @@ class chooseRoleView : UIViewController, UICollectionViewDataSource, UICollectio
                 return false
             }
             
-            //TODO Spiel beitreten und auf den Status-Code holen
-            //  OK    -> /
-            //  Sonst -> return false
+            return RestClient.joinGame(self.gameID, roleId: self.selected).response?.statusCode == 1002
         }
         return true
     }

@@ -14,7 +14,7 @@ class RestClient {
     static var hostUrl : String = ""// Hostadresse ohne Port
     
     static var headers : [String : String] = ["" : ""]// Authorization
-    
+    static var token : String = ""
 
     /*Wichtig Alle Funktionen dieser Klasse die eine Http Verbindung mittels Alamofire aufbauen, sind Asynchron*/
     
@@ -37,6 +37,102 @@ class RestClient {
             }
         }
         return req
+    }
+    
+    static func createGame(gameName: String, roleId: Int)  -> Alamofire.Request
+    {
+        self.headers = ["Authorization":"Basic \(self.token)","content-type":"application/json"]
+        var trys : Int = 0
+        let req = self.Con.request(.POST, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/games/\(self.token)/create=\(gameName)/as=\(roleId)", headers : self.headers, parameters:["":""])
+        while trys != 3 {
+            sleep(1)
+            if req.response?.statusCode != nil{
+                print("createGame(): ")
+                print("Status Code: \(req.response!.statusCode)  Versuch: \(++trys)")
+                break
+            }
+            else{
+                trys++
+            }
+        }
+        return req
+    }
+    
+    static func getGameInfo(gameId: String) -> Alamofire.Request
+    {
+        self.headers = ["Authorization":"Basic \(self.token)"]
+        var trys : Int = 0
+        let req = self.Con.request(.GET, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/games/\(self.token)/myplaysheet=\(gameId)", headers : self.headers)
+        while trys != 3 {
+            sleep(1)
+            if req.response?.statusCode != nil{
+                print("createGame(): ")
+                print("Status Code: \(req.response!.statusCode)  Versuch: \(++trys)")
+                break
+            }
+            else{
+                trys++
+            }
+        }
+        return req
+    }
+    
+    static func joinGame(gameId: String, roleId: Int) -> Alamofire.Request
+    {
+        self.headers = ["Authorization":"Basic \(self.token)","content-type":"application/json"]
+        var trys : Int = 0
+        let req = self.Con.request(.GET, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/games/\(self.token)/join=\(gameId)/as=\(roleId)", headers : self.headers, parameters : ["":""])
+        while trys != 3 {
+            sleep(1)
+            if req.response?.statusCode != nil{
+                print("createGame(): ")
+                print("Status Code: \(req.response!.statusCode)  Versuch: \(++trys)")
+                break
+            }
+            else{
+                trys++
+            }
+        }
+        
+        return req
+    }
+    
+    static func login() -> Alamofire.Request
+    {
+        var trys : Int = 0
+        let req = self.Con.request(.GET, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/login", headers : self.headers)
+        while trys != 3 {
+            sleep(1)
+            if req.response?.statusCode != nil{
+                print("login(): ")
+                print("Status Code: \(req.response!.statusCode)  Versuch: \(++trys)")
+                break
+            }
+            else{
+                trys++
+            }
+        }
+        return req
+    }
+    
+    static func register() -> Alamofire.Request
+    {
+        self.headers = ["Authorization":"Basic cmVnaXN0ZXI6cmVnaXN0ZXI=","content-type":"application/json"]
+        var trys : Int = 0
+        let req = self.Con.request(.POST, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/users/"+self.token+"/new", headers : self.headers, parameters:["":""])
+        while trys != 3 {
+            sleep(1)
+            if req.response?.statusCode != nil{
+                print("register(): ")
+                print("Status Code: \(req.response!.statusCode)  Versuch: \(++trys)")
+                break
+            }
+            else{
+                trys++
+            }
+        }
+        return req
+
     }
     
     //TODO Weitere Funktion fuer die benoetigten Rest Calls gegen die API schreiben

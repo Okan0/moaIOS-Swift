@@ -7,6 +7,10 @@
 //
 
 import UIKit
+class myHistoryCell : UITableViewCell{
+
+    @IBOutlet weak var woche: UILabel!
+}
 
 class historyView : UIViewController, UITableViewDataSource, UITableViewDelegate{
     
@@ -31,10 +35,8 @@ class historyView : UIViewController, UITableViewDataSource, UITableViewDelegate
     
     //Diese Funktion füllt die Tabelle mit "Leben"
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.historyTableView.dequeueReusableCellWithIdentifier("weekCell",forIndexPath: indexPath) as! historyCell
-        
-        cell.week.text = weeks[indexPath.row]
-        
+        let cell = self.historyTableView.dequeueReusableCellWithIdentifier("Cell",forIndexPath: indexPath) as! myHistoryCell
+        cell.woche.text = "Eine Woche"
         
         return cell
     }

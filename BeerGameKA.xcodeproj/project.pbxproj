@@ -19,11 +19,10 @@
 		52DA448F1C71321700606439 /* dashboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 52DA448C1C71321700606439 /* dashboard.png */; };
 		52DA44901C71321700606439 /* history.png in Resources */ = {isa = PBXBuildFile; fileRef = 52DA448D1C71321700606439 /* history.png */; };
 		52DA44911C71321700606439 /* statistics.png in Resources */ = {isa = PBXBuildFile; fileRef = 52DA448E1C71321700606439 /* statistics.png */; };
-		52DA44B71C71390E00606439 /* customTableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DA44B61C71390E00606439 /* customTableViewCells.swift */; };
 		52DA44B91C7139A800606439 /* historyTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DA44B81C7139A800606439 /* historyTab.swift */; };
+		52DB676F1C79F5FD0054AFA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52DB676D1C79F5FD0054AFA3 /* Main.storyboard */; };
 		52E43C6C1C6B4B2100C18D2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E43C6B1C6B4B2100C18D2A /* AppDelegate.swift */; };
 		52E43C6E1C6B4B2100C18D2A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E43C6D1C6B4B2100C18D2A /* ViewController.swift */; };
-		52E43C711C6B4B2100C18D2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52E43C6F1C6B4B2100C18D2A /* Main.storyboard */; };
 		52E43C731C6B4B2100C18D2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52E43C721C6B4B2100C18D2A /* Assets.xcassets */; };
 		52E43C761C6B4B2100C18D2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52E43C741C6B4B2100C18D2A /* LaunchScreen.storyboard */; };
 		52E43CE11C6B7BDD00C18D2A /* MenueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E43CE01C6B7BDD00C18D2A /* MenueView.swift */; };
@@ -181,12 +180,11 @@
 		52DA448C1C71321700606439 /* dashboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dashboard.png; sourceTree = "<group>"; };
 		52DA448D1C71321700606439 /* history.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = history.png; sourceTree = "<group>"; };
 		52DA448E1C71321700606439 /* statistics.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statistics.png; sourceTree = "<group>"; };
-		52DA44B61C71390E00606439 /* customTableViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customTableViewCells.swift; sourceTree = "<group>"; };
 		52DA44B81C7139A800606439 /* historyTab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = historyTab.swift; sourceTree = "<group>"; };
+		52DB676E1C79F5FD0054AFA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		52E43C681C6B4B2100C18D2A /* BeerGameKA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerGameKA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52E43C6B1C6B4B2100C18D2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52E43C6D1C6B4B2100C18D2A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		52E43C701C6B4B2100C18D2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		52E43C721C6B4B2100C18D2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52E43C751C6B4B2100C18D2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52E43C771C6B4B2100C18D2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -266,8 +264,8 @@
 		52E43C6A1C6B4B2100C18D2A /* BeerGameKA */ = {
 			isa = PBXGroup;
 			children = (
+				52DB676D1C79F5FD0054AFA3 /* Main.storyboard */,
 				52E43C6B1C6B4B2100C18D2A /* AppDelegate.swift */,
-				52E43C6F1C6B4B2100C18D2A /* Main.storyboard */,
 				52E43C6D1C6B4B2100C18D2A /* ViewController.swift */,
 				5267C5FB1C7366D800AA9202 /* RestClient.swift */,
 				5266BDB71C6C8C8000E36C15 /* LoginView.swift */,
@@ -292,7 +290,6 @@
 				52DA448C1C71321700606439 /* dashboard.png */,
 				52DA448D1C71321700606439 /* history.png */,
 				52DA448E1C71321700606439 /* statistics.png */,
-				52DA44B61C71390E00606439 /* customTableViewCells.swift */,
 				52DA44B81C7139A800606439 /* historyTab.swift */,
 			);
 			path = BeerGameKA;
@@ -475,10 +472,10 @@
 				52E43C761C6B4B2100C18D2A /* LaunchScreen.storyboard in Resources */,
 				52DA44901C71321700606439 /* history.png in Resources */,
 				52EF68801C6F6D7400D929FA /* lorry_green_64.png in Resources */,
+				52DB676F1C79F5FD0054AFA3 /* Main.storyboard in Resources */,
 				52E43C731C6B4B2100C18D2A /* Assets.xcassets in Resources */,
 				528419091C6F749D0029EE13 /* factory.png in Resources */,
 				52E9ACBA1C70B05E0082D72F /* Test_richtext.rtf in Resources */,
-				52E43C711C6B4B2100C18D2A /* Main.storyboard in Resources */,
 				52DA448F1C71321700606439 /* dashboard.png in Resources */,
 				5284190A1C6F749D0029EE13 /* wholesale.png in Resources */,
 			);
@@ -491,7 +488,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52DA44B71C71390E00606439 /* customTableViewCells.swift in Sources */,
 				52E9C7ED1C70C5D700061A61 /* chooseRole.swift in Sources */,
 				5267C5FC1C7366D800AA9202 /* RestClient.swift in Sources */,
 				52E43C6E1C6B4B2100C18D2A /* ViewController.swift in Sources */,
@@ -526,10 +522,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		52E43C6F1C6B4B2100C18D2A /* Main.storyboard */ = {
+		52DB676D1C79F5FD0054AFA3 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				52E43C701C6B4B2100C18D2A /* Base */,
+				52DB676E1C79F5FD0054AFA3 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

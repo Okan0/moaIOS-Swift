@@ -36,33 +36,19 @@ class LoginView : UIViewController {
             var temp=NameField.text!+":"+PasswField.text!
             var data = temp.dataUsingEncoding(NSUTF8StringEncoding)
             let temptoken = data?.base64EncodedStringWithOptions(NSDataBase64EncodingOptions.Encoding64CharacterLineLength)
-           
-            RestClient.headers = ["Authorization": "Basic SWNoOjEyMzQ="]
+            print("Register-Token: \(data)")
+           RestClient.token = temptoken!
             
             if identifier == "registerSegue"{
                 temp="register:register"
                 data=temp.dataUsingEncoding(NSUTF8StringEncoding)
-                //TODO überprüfen ob registriert werden kann
-                //  OK    -> /
-                //  Sonst -> return false
-                
-                let req = RestClient.connCheck().responseJSON {
-                    response in
-                    
+                RestClient.headers = ["Authorization": "Basic \(data!)"]
+                if RestClient.register().response?.statusCode != 201{
+                    return false
                 }
             }
-            else{
-                //TODO überprüfen ob eingelogt werden kann
-                //  OK    -> /
-                //  Sonst -> return false
-                
-                let req = RestClient.connCheck().responseJSON {
-                    response in
-                    
-                }
-            }
-            token = temptoken!
-            return true
+            RestClient.headers = ["Authorization": "Basic \(temptoken!)"]
+            return RestClient.login().response?.statusCode == 200
         }
         return true
     }

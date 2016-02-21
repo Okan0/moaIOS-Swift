@@ -52,6 +52,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
    
     }
     
+    private func handler(status: Bool?) -> Bool{
+        
+        return status!
+    }
+    
     //Diese Funktion wird ausgeführt, wenn eine andere View aufgerufen werden soll und...
     //...überprüft ob dies erlaubt ist oder nicht
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject!) -> Bool {
@@ -126,7 +131,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil));
                 showViewController(alert, sender: self);
                 
-                return false
+                return true
+                //return false
             }
             else{
                 return true

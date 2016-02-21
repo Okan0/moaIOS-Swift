@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
@@ -225,7 +225,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zWr-za-7PU">
-                                <rect key="frame" x="20" y="204" width="169" height="183"/>
+                                <rect key="frame" x="20" y="204" width="169" height="139"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="169" id="WsE-DC-2pf"/>
@@ -616,33 +616,30 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vKP-1c-hUE">
-                                <rect key="frame" x="20" y="97" width="560" height="503"/>
+                                <rect key="frame" x="20" y="97" width="560" height="454"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="weekCell" id="Qwj-Xc-XEe" customClass="historyCell" customModule="BeerGameKA" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="Qwj-Xc-XEe" customClass="myHistoryCell" customModule="BeerGameKA" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="560" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qwj-Xc-XEe" id="zAd-ir-2p5">
                                             <rect key="frame" x="0.0" y="0.0" width="527" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Woche 40" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gfZ-A6-Z8L">
-                                                    <rect key="frame" x="8" y="11" width="85" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="85" id="kiY-OA-Mt9"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tuN-zZ-9Mi">
+                                                    <rect key="frame" x="208" y="11" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="gfZ-A6-Z8L" firstAttribute="centerY" secondItem="zAd-ir-2p5" secondAttribute="centerY" id="KFo-Pr-uos"/>
-                                                <constraint firstItem="gfZ-A6-Z8L" firstAttribute="leading" secondItem="zAd-ir-2p5" secondAttribute="leadingMargin" id="pLY-pu-Xp7"/>
+                                                <constraint firstItem="tuN-zZ-9Mi" firstAttribute="top" secondItem="zAd-ir-2p5" secondAttribute="topMargin" constant="3" id="T0a-Xw-vGF"/>
+                                                <constraint firstItem="tuN-zZ-9Mi" firstAttribute="leading" secondItem="zAd-ir-2p5" secondAttribute="leadingMargin" constant="200" id="TO7-x9-Unc"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="week" destination="gfZ-A6-Z8L" id="oVB-TY-h99"/>
+                                            <outlet property="woche" destination="tuN-zZ-9Mi" id="cSH-br-tMv"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -950,9 +947,9 @@
         <image name="statistics.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hpr-Hq-Quc"/>
-        <segue reference="I5b-5M-BiO"/>
-        <segue reference="5ye-12-UEm"/>
+        <segue reference="zBG-b9-N3D"/>
+        <segue reference="46s-YV-OzA"/>
+        <segue reference="UqR-Sg-dVD"/>
         <segue reference="Z4C-ak-Nd2"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -60,6 +60,8 @@ class createGame : UIViewController, UICollectionViewDataSource, UICollectionVie
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell : UICollectionViewCell = collectionView.cellForItemAtIndexPath(indexPath)!
         cell.backgroundColor = UIColor.greenColor()
+        
+        selected = indexPath.row
     }
     
     //Diese Funktion wird ausgeführt wenn auf "Create" geklickt wird...
@@ -81,9 +83,7 @@ class createGame : UIViewController, UICollectionViewDataSource, UICollectionVie
                 return false
             }
             
-            //TODO Spiel erstellen und auf den Status-Code holen
-            //  OK    -> /
-            //  Sonst -> return false
+            return RestClient.createGame(gameName.text!, roleId: selected).response?.statusCode==1001
         }
         
         return true
