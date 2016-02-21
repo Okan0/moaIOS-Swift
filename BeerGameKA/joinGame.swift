@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 struct showGame{
     var id:String
@@ -23,16 +24,24 @@ class joinGame : UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var games : [showGame] = []
     
+    func handler(val: AnyObject?){
+        if (val != nil)
+        {
+            let json = JSON(val!)
+            for (var i : Int = 0; i < json.count; i++ ){
+                self.games.append(showGame(id: json[i, "GameId"].stringValue, name: json[i, "GameName"].stringValue, count: json[i, "PlayerCount"].stringValue))
+            }
+        }
+        self.gamesTableView.reloadData()
+    }
+    
     //Diese Funktion wird beim laden der View aufgerufen
     override func viewDidLoad() {
         super.viewDidLoad()
         //TODO alle offenen Spiele holen
         gamesTableView.delegate = self
-        games.append(showGame(id: "1", name: "Ein Spiel", count: "1"))
-        games.append(showGame(id: "2", name: "Ein weiteres Spiel", count: "3"))
-        games.append(showGame(id: "3", name: "Ein neues Spiel", count: "2"))
-        games.append(showGame(id: "4", name: "Ein letztes Spiel", count: "2"))
         gamesTableView.dataSource = self
+        RestClient.getOpenGames(handler)
     }
     
     //Diese Funktion wird ausgeführt, wenn eine andere View aufgerufen werden soll und...
@@ -42,7 +51,7 @@ class joinGame : UIViewController, UITableViewDataSource, UITableViewDelegate {
             let temp = segue.destinationViewController as! chooseRoleView
             temp.host = host
             temp.token = token
-            temp.gameID = gameId
+            temp.gameID = games[self.gamesTableView.indexPathForSelectedRow!.row].id
         }
     }
     

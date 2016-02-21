@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 struct myGame{
     var id:String
@@ -24,6 +26,16 @@ class myGames : UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var gameId = String()
     
+    func handler(resp: AnyObject?){
+            if (resp != nil)
+            {
+                let json = JSON(resp!)
+                for (var i : Int = 0; i < json.count; i++ ){
+                    self.games.append(myGame(id: json[i, "GameId"].stringValue, name: json[i, "GameName"].stringValue, role: json[i, "MyRole"].stringValue, state: json[i, "State"].intValue))
+                }
+            }
+        self.myGamesTableView.reloadData()
+        }
     //Diese Funktion wird beim laden der View aufgerufen
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +43,7 @@ class myGames : UIViewController, UITableViewDataSource, UITableViewDelegate {
         myGamesTableView.dataSource = self
         
         //TODO meine Spiele aus der Datenbank holen und das Array füllen
-        
-        games.append(myGame(id: "1", name: "Mein Spiel", role: "Distributor", state: 1))
-        games.append(myGame(id: "2", name: "Mein zweites Spiel", role: "Wholesaler", state: 2))
-        games.append(myGame(id: "3", name: "Mein nächstes Spiel", role: "Distributor", state: 3))
-        games.append(myGame(id: "4", name: "Mein letztes Spiel", role: "Distributor", state: 0))
+        RestClient.getMyGames(handler)
     }
     
     //Diese Funktion wird ausgeführt, wenn eine andere View aufgerufen werden soll und...

@@ -22,6 +22,18 @@ class chooseRoleView : UIViewController, UICollectionViewDataSource, UICollectio
     @IBOutlet weak var navTitle: UINavigationItem!
     @IBOutlet weak var roleCollectionView: UICollectionView!
     
+    func handler(val: AnyObject?){
+        if (val != nil)
+        {
+            let json = JSON(val!)
+            for (var i : Int = 0; i < json.count; i++ ){
+                let role = json[i, "Role"].stringValue
+                self.closed.append(role)
+            }
+        }
+        self.roleCollectionView.reloadData()
+    }
+    
     //Diese Funktion wid ausgeführt, wenn die View geladen wird
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,18 +42,7 @@ class chooseRoleView : UIViewController, UICollectionViewDataSource, UICollectio
         
         print("Received-ID  : \(gameID)")
         
-        RestClient.getGameInfo(self.gameID).responseJSON{
-            response in
-            
-            if let val = response.result.value
-            {
-                let json = JSON(val)
-                    for (var i : Int = 0; i < json.count; i++ ){
-                        let role = json[i, "Role"].stringValue
-                        self.closed.append(role)
-                    }
-            }
-        }
+        RestClient.getGameInfo(self.gameID, callback: handler)
     }
     
     //Diese Funktion gibt an, wie viele Elemente in der Collection View enthalten sind
@@ -80,7 +81,7 @@ class chooseRoleView : UIViewController, UICollectionViewDataSource, UICollectio
     //...Sie überprüft ob didSelectItemAtIndexPath und didDeselectItemAtIndexPath...
     //...ausgeführt werden
     func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if indexPath.row%2==0{
+        if closed.contains(items[indexPath.row]){
             return false
         }
         return true
@@ -91,6 +92,7 @@ class chooseRoleView : UIViewController, UICollectionViewDataSource, UICollectio
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell : UICollectionViewCell = collectionView.cellForItemAtIndexPath(indexPath)!
         cell.backgroundColor = UIColor.greenColor()
+        selected = indexPath.row
     }
 
     //Diese Funktion wird ausgeführt wenn auf "Join" geklickt wird...
@@ -105,7 +107,7 @@ class chooseRoleView : UIViewController, UICollectionViewDataSource, UICollectio
                 return false
             }
             
-            return RestClient.joinGame(self.gameID, roleId: self.selected).response?.statusCode == 1002
+            return RestClient.joinGame(self.gameID, roleId: self.selected).response?.statusCode == 200
         }
         return true
     }

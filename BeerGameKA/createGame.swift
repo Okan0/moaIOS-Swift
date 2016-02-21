@@ -58,6 +58,7 @@ class createGame : UIViewController, UICollectionViewDataSource, UICollectionVie
     
     //Diese Funktion wird ausgeführt wenn ein neues Element ausgewählt wird
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print("You selected cell #\(indexPath.item)!")
         let cell : UICollectionViewCell = collectionView.cellForItemAtIndexPath(indexPath)!
         cell.backgroundColor = UIColor.greenColor()
         

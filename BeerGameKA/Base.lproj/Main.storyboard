@@ -224,8 +224,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zWr-za-7PU">
-                                <rect key="frame" x="20" y="204" width="169" height="139"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="zWr-za-7PU">
+                                <rect key="frame" x="20" y="204" width="169" height="183"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="169" id="WsE-DC-2pf"/>
@@ -531,7 +531,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Wa-9n-kP4">
-                                <rect key="frame" x="20" y="86" width="560" height="514"/>
+                                <rect key="frame" x="20" y="86" width="560" height="465"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="gamesCell" id="igb-LS-DRh" customClass="myGamesCell" customModule="BeerGameKA" customModuleProvider="target">
@@ -615,7 +615,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vKP-1c-hUE">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vKP-1c-hUE">
                                 <rect key="frame" x="20" y="97" width="560" height="454"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -922,24 +922,6 @@
             </objects>
             <point key="canvasLocation" x="1397" y="507"/>
         </scene>
-        <!--Item 1-->
-        <scene sceneID="Zpe-dt-IeN">
-            <objects>
-                <viewController id="JO6-77-04x" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ds2-jm-EFA"/>
-                        <viewControllerLayoutGuide type="bottom" id="ahu-Mp-hED"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lRa-eU-TcA">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="Q8s-DX-gqx"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hn5-z6-7wg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="dashboard.png" width="32" height="32"/>
@@ -947,7 +929,7 @@
         <image name="statistics.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zBG-b9-N3D"/>
+        <segue reference="u3k-UI-IMQ"/>
         <segue reference="46s-YV-OzA"/>
         <segue reference="UqR-Sg-dVD"/>
         <segue reference="Z4C-ak-Nd2"/>

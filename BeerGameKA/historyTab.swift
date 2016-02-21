@@ -24,7 +24,6 @@ class historyView : UIViewController, UITableViewDataSource, UITableViewDelegate
         for var index = 1; index < 20; index++ {
             weeks.append("Woche \(index)")
         }
-        var warteHier = 0
     }
     
     //Wird fuer die TableView benoetigt
