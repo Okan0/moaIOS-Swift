@@ -46,10 +46,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         print("Start")
         myTableView.dataSource=self
         myTableView.delegate=self
-        
-        RestClient.headers = ["Authorization": "Basic SWNoOjEyMzQ="]
- 
-   
     }
     
     private func handler(status: Bool?) -> Bool{
@@ -76,54 +72,54 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 response in
             }
             
-            _ = RestClient.authCheck().responseJSON {
-                response in
-                /*
-                ( Array Beginn          ) Array Ende
-                { Objekt beginn         } Objekt Ende
-                , Seperatorzeichen
-                ----------------------------------------------
-                (
-                    {
-                        id = 1;
-                        password = 1234;
-                        roles = (
-                            {
-                                "role_id" = 1;
-                                rolename = "manager-gui";
-                            },
-                            .......
-                        )
-                    },
-                    ......
-                )
-                ----------------------------------------------
-                */
-                
-                if let value = response.result.value {
-                    
-                    let json = JSON(value)
-                    
-                    for (var i : Int = 0; i < 3; i++ ){
-                    print(json[i, "username"].stringValue)
-                        
-                        
-                            print(json[i, "roles"].arrayValue)
-
-                    }
-                    
-                    
-                    print("---------------------")
-                    
-                    
-                    for (var i : Int = 0; i < 3; i++ ){
-                        print(json[i, "username"]["roles"])
-                    }
-                    
-                    //print("JSON:  \(JSOn)")
-                }
-                
-            }
+//            _ = RestClient.authCheck().responseJSON {
+//                response in
+//                /*
+//                ( Array Beginn          ) Array Ende
+//                { Objekt beginn         } Objekt Ende
+//                , Seperatorzeichen
+//                ----------------------------------------------
+//                (
+//                    {
+//                        id = 1;
+//                        password = 1234;
+//                        roles = (
+//                            {
+//                                "role_id" = 1;
+//                                rolename = "manager-gui";
+//                            },
+//                            .......
+//                        )
+//                    },
+//                    ......
+//                )
+//                ----------------------------------------------
+//                */
+//                
+//                if let value = response.result.value {
+//                    
+//                    let json = JSON(value)
+//                    
+//                    for (var i : Int = 0; i < 3; i++ ){
+//                    print(json[i, "username"].stringValue)
+//                        
+//                        
+//                            print(json[i, "roles"].arrayValue)
+//
+//                    }
+//                    
+//                    
+//                    print("---------------------")
+//                    
+//                    
+//                    for (var i : Int = 0; i < 3; i++ ){
+//                        print(json[i, "username"]["roles"])
+//                    }
+//                    
+//                    //print("JSON:  \(JSOn)")
+//                }
+//        
+//            }
             
             
             if  req.response?.statusCode != 200 {

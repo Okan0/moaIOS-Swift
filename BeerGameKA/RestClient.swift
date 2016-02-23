@@ -58,26 +58,77 @@ class RestClient {
         return req
     }
     
-    static func getMyGames(callback: ((resp: AnyObject?)->Void)?){
+//    static func getMyGames(callback: ((resp: AnyObject?)->Void)?){
+//        self.headers = ["Authorization":"Basic \(self.token)"]
+//        self.Con.request(.GET, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/users/\(self.token)/games", headers : self.headers).responseJSON{ response in
+//                callback?(resp: response.result.value)
+//        }
+//    }
+    static func getMyGames() -> Alamofire.Request{
         self.headers = ["Authorization":"Basic \(self.token)"]
-        self.Con.request(.GET, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/users/\(self.token)/games", headers : self.headers).responseJSON{ response in
-                callback?(resp: response.result.value)
+        var trys : Int = 0
+        let req = self.Con.request(.GET, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/users/\(self.token)/games", headers : self.headers)
+        while trys != 3 {
+            sleep(1)
+            if req.response?.statusCode != nil{
+                print("getMyGames(): ")
+                print("Status Code: \(req.response!.statusCode)  Versuch: \(++trys)")
+                break
+            }
+            else{
+                trys++
+            }
         }
+        return req
     }
     
-    static func getOpenGames(callback: ((resp: AnyObject?)->Void)?){
+//    static func getOpenGames(callback: ((resp: AnyObject?)->Void)?){
+//        self.headers = ["Authorization":"Basic \(self.token)"]
+//        self.Con.request(.GET, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/games/\(self.token)/open", headers : self.headers).responseJSON{ response in
+//            callback?(resp: response.result.value)
+//        }
+//    }
+    static func getOpenGames() -> Alamofire.Request{
         self.headers = ["Authorization":"Basic \(self.token)"]
-        self.Con.request(.GET, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/games/\(self.token)/open", headers : self.headers).responseJSON{ response in
-            callback?(resp: response.result.value)
+        var trys : Int = 0
+        let req = self.Con.request(.GET, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/games/\(self.token)/open", headers : self.headers)
+        while trys != 3 {
+            sleep(1)
+            if req.response?.statusCode != nil{
+                print("getOpenGames(): ")
+                print("Status Code: \(req.response!.statusCode)  Versuch: \(++trys)")
+                break
+            }
+            else{
+                trys++
+            }
         }
+        return req
     }
     
-    static func getGameInfo(gameId: String,callback: ((resp: AnyObject?)->Void)?)
-    {
+//    static func getGameInfo(gameId: String,callback: ((resp: AnyObject?)->Void)?)
+//    {
+//        self.headers = ["Authorization":"Basic \(self.token)"]
+//        self.Con.request(.GET, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/games/\(self.token)/myplaysheet=\(gameId)", headers : self.headers).responseJSON{ response in
+//            callback?(resp: response.result.value)
+//        }
+//    }
+    static func getGameInfo(gameId : String) -> Alamofire.Request{
         self.headers = ["Authorization":"Basic \(self.token)"]
-        self.Con.request(.GET, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/games/\(self.token)/myplaysheet=\(gameId)", headers : self.headers).responseJSON{ response in
-            callback?(resp: response.result.value)
+        var trys : Int = 0
+        let req = self.Con.request(.GET, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/games/\(self.token)/myplaysheet=\(gameId)", headers : self.headers)
+        while trys != 3 {
+            sleep(1)
+            if req.response?.statusCode != nil{
+                print("getGameInfo(): ")
+                print("Status Code: \(req.response!.statusCode)  Versuch: \(++trys)")
+                break
+            }
+            else{
+                trys++
+            }
         }
+        return req
     }
     
     static func joinGame(gameId: String, roleId: Int) -> Alamofire.Request
@@ -124,7 +175,7 @@ class RestClient {
         var trys : Int = 0
         let req = self.Con.request(.POST, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/users/"+self.token+"/new", headers : self.headers, parameters:["":""])
         while trys != 3 {
-            sleep(1)
+            sleep(2)
             if req.response?.statusCode != nil{
                 print("register(): ")
                 print("Status Code: \(req.response!.statusCode)  Versuch: \(++trys)")

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 import SwiftyJSON
 
 struct showGame{
@@ -24,16 +25,16 @@ class joinGame : UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var games : [showGame] = []
     
-    func handler(val: AnyObject?){
-        if (val != nil)
-        {
-            let json = JSON(val!)
-            for (var i : Int = 0; i < json.count; i++ ){
-                self.games.append(showGame(id: json[i, "GameId"].stringValue, name: json[i, "GameName"].stringValue, count: json[i, "PlayerCount"].stringValue))
-            }
-        }
-        self.gamesTableView.reloadData()
-    }
+//    func handler(val: AnyObject?){
+//        if (val != nil)
+//        {
+//            let json = JSON(val!)
+//            for (var i : Int = 0; i < json.count; i++ ){
+//                self.games.append(showGame(id: json[i, "GameId"].stringValue, name: json[i, "GameName"].stringValue, count: json[i, "PlayerCount"].stringValue))
+//            }
+//        }
+//        self.gamesTableView.reloadData()
+//    }
     
     //Diese Funktion wird beim laden der View aufgerufen
     override func viewDidLoad() {
@@ -41,7 +42,18 @@ class joinGame : UIViewController, UITableViewDataSource, UITableViewDelegate {
         //TODO alle offenen Spiele holen
         gamesTableView.delegate = self
         gamesTableView.dataSource = self
-        RestClient.getOpenGames(handler)
+        
+        _ = RestClient.getOpenGames().responseJSON {
+            response in
+            
+            if let val = response.result.value {
+                let json = JSON(val)
+                for (var i : Int = 0; i < json.count; i++ ){
+                    self.games.append(showGame(id: json[i, "GameId"].stringValue, name: json[i, "GameName"].stringValue, count: json[i, "PlayerCount"].stringValue))
+                }
+            }
+            self.gamesTableView.reloadData()
+        }
     }
     
     //Diese Funktion wird ausgeführt, wenn eine andere View aufgerufen werden soll und...

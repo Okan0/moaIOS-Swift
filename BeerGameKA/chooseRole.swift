@@ -10,8 +10,8 @@ import UIKit
 import SwiftyJSON
 
 class chooseRoleView : UIViewController, UICollectionViewDataSource, UICollectionViewDelegate{
-    var items = ["Retailer","Wholesaler","Distributor","Factory"]
-    var pics = ["einkaufswagen.png","wholesale.png","lorry_green_64.png","factory.png"]
+    var items = ["Wholesaler","Distributor", "Retailer", "Factory"]
+    var pics = ["wholesale.png","lorry_green_64.png","einkaufswagen.png", "factory.png"]
     var selected = -1
     var closed : [String] = []
     
@@ -22,17 +22,17 @@ class chooseRoleView : UIViewController, UICollectionViewDataSource, UICollectio
     @IBOutlet weak var navTitle: UINavigationItem!
     @IBOutlet weak var roleCollectionView: UICollectionView!
     
-    func handler(val: AnyObject?){
-        if (val != nil)
-        {
-            let json = JSON(val!)
-            for (var i : Int = 0; i < json.count; i++ ){
-                let role = json[i, "Role"].stringValue
-                self.closed.append(role)
-            }
-        }
-        self.roleCollectionView.reloadData()
-    }
+//    func handler(val: AnyObject?){
+//        if (val != nil)
+//        {
+//            let json = JSON(val!)
+//            for (var i : Int = 0; i < json.count; i++ ){
+//                let role = json[i, "Role"].stringValue
+//                self.closed.append(role)
+//            }
+//        }
+//        self.roleCollectionView.reloadData()
+//    }
     
     //Diese Funktion wid ausgeführt, wenn die View geladen wird
     override func viewDidLoad() {
@@ -41,8 +41,21 @@ class chooseRoleView : UIViewController, UICollectionViewDataSource, UICollectio
         roleCollectionView.delegate=self
         
         print("Received-ID  : \(gameID)")
+        print("items  : \(items[0])")
+
         
-        RestClient.getGameInfo(self.gameID, callback: handler)
+        _ = RestClient.getGameInfo(self.gameID).responseJSON{
+            response in
+            
+            if let val = response.result.value {
+                    let json = JSON(val)
+                    for (var i : Int = 0; i < json.count; i++ ){
+                        let role = json[i, "Role"].stringValue
+                        self.closed.append(role)
+                    }
+                }
+                self.roleCollectionView.reloadData()
+        }
     }
     
     //Diese Funktion gibt an, wie viele Elemente in der Collection View enthalten sind
@@ -73,6 +86,7 @@ class chooseRoleView : UIViewController, UICollectionViewDataSource, UICollectio
     //Diese Funktion wird ausgeführt, wenn die Wahl eines Elements aufgehoben wird
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
         print("You deselected cell #\(indexPath.item)!")
+        print("items  : \(indexPath.row)")
         let cell : UICollectionViewCell = collectionView.cellForItemAtIndexPath(indexPath)!
         cell.backgroundColor = UIColor.clearColor()
     }

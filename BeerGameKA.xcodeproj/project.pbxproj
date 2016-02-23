@@ -14,6 +14,7 @@
 		5267C5FC1C7366D800AA9202 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5267C5FB1C7366D800AA9202 /* RestClient.swift */; };
 		5267C6511C74C33000AA9202 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5267C6441C74C30B00AA9202 /* SwiftyJSON.framework */; };
 		5267C6521C74C33000AA9202 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5267C6441C74C30B00AA9202 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5269098E1C7B215C00B1DD27 /* dashBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269098D1C7B215C00B1DD27 /* dashBoard.swift */; };
 		528419091C6F749D0029EE13 /* factory.png in Resources */ = {isa = PBXBuildFile; fileRef = 528419071C6F749D0029EE13 /* factory.png */; };
 		5284190A1C6F749D0029EE13 /* wholesale.png in Resources */ = {isa = PBXBuildFile; fileRef = 528419081C6F749D0029EE13 /* wholesale.png */; };
 		52DA448F1C71321700606439 /* dashboard.png in Resources */ = {isa = PBXBuildFile; fileRef = 52DA448C1C71321700606439 /* dashboard.png */; };
@@ -175,6 +176,7 @@
 		5266BF041C6CC53100E36C15 /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = Alamofire/Alamofire.xcodeproj; sourceTree = "<group>"; };
 		5267C5FB1C7366D800AA9202 /* RestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
 		5267C6391C74C30B00AA9202 /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = "BeerGameKA/SwiftyJSON-master/SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
+		5269098D1C7B215C00B1DD27 /* dashBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dashBoard.swift; sourceTree = "<group>"; };
 		528419071C6F749D0029EE13 /* factory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = factory.png; sourceTree = "<group>"; };
 		528419081C6F749D0029EE13 /* wholesale.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wholesale.png; sourceTree = "<group>"; };
 		52DA448C1C71321700606439 /* dashboard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dashboard.png; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				52DA448D1C71321700606439 /* history.png */,
 				52DA448E1C71321700606439 /* statistics.png */,
 				52DA44B81C7139A800606439 /* historyTab.swift */,
+				5269098D1C7B215C00B1DD27 /* dashBoard.swift */,
 			);
 			path = BeerGameKA;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 			files = (
 				52E9C7ED1C70C5D700061A61 /* chooseRole.swift in Sources */,
 				5267C5FC1C7366D800AA9202 /* RestClient.swift in Sources */,
+				5269098E1C7B215C00B1DD27 /* dashBoard.swift in Sources */,
 				52E43C6E1C6B4B2100C18D2A /* ViewController.swift in Sources */,
 				52E43CEF1C6B8B4900C18D2A /* myGames.swift in Sources */,
 				52DA44B91C7139A800606439 /* historyTab.swift in Sources */,

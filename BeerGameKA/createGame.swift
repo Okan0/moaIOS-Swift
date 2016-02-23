@@ -17,8 +17,8 @@ class myCollectionViewCell : UICollectionViewCell{
 class createGame : UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var gameName: UITextField!
-    var items = ["Retailer","Wholesaler","Distributor","Factory"]
-    var pics = ["einkaufswagen.png","wholesale.png","lorry_green_64.png","factory.png"]
+    var items = ["Wholesaler","Distributor","Retailer", "Factory"]
+    var pics = ["wholesale.png","lorry_green_64.png","einkaufswagen.png", "factory.png"]
     var selected = -1
     
     var token = String()
