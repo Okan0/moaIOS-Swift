@@ -818,23 +818,11 @@
                                     <constraint firstAttribute="width" constant="128" id="o52-6f-aBD"/>
                                 </constraints>
                             </imageView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3c-QU-qnb">
-                                <rect key="frame" x="479" y="406" width="121" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="121" id="Zas-qk-ZKS"/>
-                                    <constraint firstAttribute="height" constant="80" id="qxZ-xp-6u4"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="dataSource" destination="CaR-yy-Nul" id="me6-fk-5NG"/>
-                                    <outlet property="delegate" destination="CaR-yy-Nul" id="mOA-rI-7ZW"/>
-                                </connections>
-                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZKv-qe-1mF" firstAttribute="top" secondItem="wez-yj-1wg" secondAttribute="bottom" constant="85" id="67i-av-xDX"/>
                             <constraint firstItem="wez-yj-1wg" firstAttribute="baseline" secondItem="0Cb-lu-Jzt" secondAttribute="baseline" id="9gs-ru-Amw"/>
-                            <constraint firstItem="a3c-QU-qnb" firstAttribute="trailing" secondItem="lxW-Uw-ANl" secondAttribute="trailing" id="Bad-mU-nGo"/>
                             <constraint firstItem="lxW-Uw-ANl" firstAttribute="leading" secondItem="eBO-AW-pvL" secondAttribute="leadingMargin" constant="-20" id="C2m-V4-Rdq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="W0X-Tu-aUK" secondAttribute="trailing" id="D2e-h3-yg4"/>
                             <constraint firstItem="dDb-et-RTd" firstAttribute="leading" secondItem="EMp-7Y-wTo" secondAttribute="trailing" constant="8" symbolic="YES" id="FSb-Yt-3Mo"/>
@@ -857,7 +845,6 @@
                             <constraint firstItem="rld-s1-5Il" firstAttribute="top" secondItem="lxW-Uw-ANl" secondAttribute="bottom" constant="25" id="pMi-lM-QnR"/>
                             <constraint firstItem="rld-s1-5Il" firstAttribute="leading" secondItem="Tnh-gy-cCm" secondAttribute="trailing" constant="30" id="qHx-hm-vX7"/>
                             <constraint firstItem="rTa-Po-hwm" firstAttribute="top" secondItem="dDb-et-RTd" secondAttribute="bottom" constant="26" id="rXI-Qt-Pj2"/>
-                            <constraint firstItem="W0X-Tu-aUK" firstAttribute="top" secondItem="a3c-QU-qnb" secondAttribute="bottom" constant="8" symbolic="YES" id="s7e-mp-3Bo"/>
                             <constraint firstItem="wez-yj-1wg" firstAttribute="leading" secondItem="ZKv-qe-1mF" secondAttribute="leading" id="wXH-UO-TJx"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Tnh-gy-cCm" secondAttribute="leading" id="yvN-YU-3Ju"/>
                         </constraints>
@@ -874,7 +861,6 @@
                         <outlet property="nextIncomingField" destination="Ai4-EC-Jbk" id="Urk-cB-W9g"/>
                         <outlet property="roleField" destination="rld-s1-5Il" id="D01-Z9-eYl"/>
                         <outlet property="roundField" destination="jXX-ds-4gG" id="cm8-bm-2Zh"/>
-                        <outlet property="valuePicker" destination="a3c-QU-qnb" id="EBD-HQ-oXY"/>
                         <outlet property="view" destination="eBO-AW-pvL" id="h6C-aW-3QE"/>
                     </connections>
                 </viewController>
@@ -1041,7 +1027,7 @@
         <image name="statistics.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="u3k-UI-IMQ"/>
+        <segue reference="DlH-KX-lp6"/>
         <segue reference="46s-YV-OzA"/>
         <segue reference="jsq-Y1-xGA"/>
         <segue reference="UqR-Sg-dVD"/>

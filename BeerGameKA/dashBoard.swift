@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import SwiftyJSON
 
-
-class dashBoard : UIViewController, UITableViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate{
+struct playSheet{
+     var owner_id:String
+     var backorder:String
+     var round:String
+}
+class dashBoard : UIViewController, UITableViewDelegate{
     
 
     @IBOutlet weak var image: UIImageView!
@@ -24,8 +29,10 @@ class dashBoard : UIViewController, UITableViewDelegate, UIPickerViewDataSource,
     @IBOutlet weak var bestellButton: UIButton!
     @IBOutlet weak var valuePicker: UIPickerView!
     
-   
     var arra:NSMutableArray = []
+    var newOrder : String = ""
+    var gameID = String()
+    var sheet : [playSheet] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +40,28 @@ class dashBoard : UIViewController, UITableViewDelegate, UIPickerViewDataSource,
         for(var i: Int = 0 ; i <= 1000; i++){
             arra.addObject(i)
         }
-  
+        
+        _ = RestClient.getGameInfo(self.gameID).responseJSON{
+            response in
+            
+            if let val = response.result.value {
+                let json = JSON(val)
+                for (var i : Int = 0; i < json.count; i++ ){
+                    
+                    self.roleField.text = self.roleField.text! + json[i, "Role"].stringValue
+                    self.averageOrderField.text = self.averageOrderField.text! + json[i, "average_order"].stringValue
+                    self.costsField.text = self.costsField.text! + json[i, "costs"].stringValue
+                    self.inventoryField.text = self.inventoryField.text! + json[i, "aviable"].stringValue
+                    self.nextIncomingField.text = self.nextIncomingField.text! + json[i, "next_inc"].stringValue
+                    self.newOrder = json[i, "delivered"].stringValue
+                    self.sheet.append(playSheet(owner_id: json[i, "owner_id"].stringValue, backorder: json[i, "backorder"].stringValue, round: json[i, "round"].stringValue))
+                    //self.closed.append(role)
+                }
+            }
+            //self.roleCollectionView.reloadData()
+        }
+        
+        //self.backorderField.text = self.backorderField.text! +
     }
     
     //Diese Funktion wird ausgeführt wenn auf "Bestellen" geklickt wird...
@@ -43,7 +71,7 @@ class dashBoard : UIViewController, UITableViewDelegate, UIPickerViewDataSource,
         if identifier == "createSegue" {
             
 
-            var zahl = Int(neueBestellung.text!)
+            let zahl = Int(neueBestellung.text!)
             
             if (neueBestellung.text!.isEmpty) {
                 let alert=UIAlertController(title: "Keine Wert", message: "Bitte geben Sie einen Menge für die Bestellung ein", preferredStyle: UIAlertControllerStyle.Alert);
@@ -71,15 +99,4 @@ class dashBoard : UIViewController, UITableViewDelegate, UIPickerViewDataSource,
         return true
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 1
-    }
-    
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return " \(arra[row])"
-    }
 }

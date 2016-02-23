@@ -39,6 +39,8 @@ class RestClient {
         return req
     }
     
+    /* createGame() erstellt ein neues Spiel mit den uebergebenen Namen und der Rolle, die der erstellenden Person zugewiesen wird
+    */
     static func createGame(gameName: String, roleId: Int) -> Alamofire.Request
     {
         self.headers = ["Authorization":"Basic \(self.token)","content-type":"application/json"]
@@ -64,6 +66,9 @@ class RestClient {
 //                callback?(resp: response.result.value)
 //        }
 //    }
+    
+    /* getMyGames() gibt die Spiele eines Benutzers zurueck
+    */
     static func getMyGames() -> Alamofire.Request{
         self.headers = ["Authorization":"Basic \(self.token)"]
         var trys : Int = 0
@@ -88,11 +93,15 @@ class RestClient {
 //            callback?(resp: response.result.value)
 //        }
 //    }
+    
+    /* getOpenGames() gibt alle Spiele zurueck , welche noch nicht gespielt werden.
+    Die Spiele, denen man noch beitreten kann.
+    */
     static func getOpenGames() -> Alamofire.Request{
         self.headers = ["Authorization":"Basic \(self.token)"]
         var trys : Int = 0
         let req = self.Con.request(.GET, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/games/\(self.token)/open", headers : self.headers)
-        while trys != 3 {
+        while trys != 5 {
             sleep(1)
             if req.response?.statusCode != nil{
                 print("getOpenGames(): ")
@@ -113,6 +122,10 @@ class RestClient {
 //            callback?(resp: response.result.value)
 //        }
 //    }
+    
+    /* getGameInfo() gibt die Playsheet Daten eines Games zurueck. 
+       Nur die des Benutzters.
+    */
     static func getGameInfo(gameId : String) -> Alamofire.Request{
         self.headers = ["Authorization":"Basic \(self.token)"]
         var trys : Int = 0
@@ -151,6 +164,8 @@ class RestClient {
         return req
     }
     
+    /* login() prueft ob die Anmeldungsdaten korrekt im System vorhanden sind.
+    */
     static func login() -> Alamofire.Request
     {
         var trys : Int = 0
@@ -169,6 +184,8 @@ class RestClient {
         return req
     }
     
+    /* register() legt einen neuen Benutzer mit Passwort und Benutzernamen an.
+    */
     static func register() -> Alamofire.Request
     {
         self.headers = ["Authorization":"Basic cmVnaXN0ZXI6cmVnaXN0ZXI=","content-type":"application/json"]
@@ -188,25 +205,7 @@ class RestClient {
         return req
 
     }
-    
-    //TODO Weitere Funktion fuer die benoetigten Rest Calls gegen die API schreiben
-    static func authCheck() -> Alamofire.Request{
-        
-        var trys : Int = 0
-        let req = self.Con.request(.GET, "https://"+self.hostUrl+":8443/MoaIosBeer/rest/v1.01/users", headers : self.headers)
-        while trys != 3 {
-            sleep(1)
-            if req.response?.statusCode != nil{
-                print("authCheck(): ")
-                print("Status Code: \(req.response!.statusCode)  Versuch: \(++trys)")
-                break
-            }
-            else{
-                trys++
-            }
-        }
-        return req
-    }
+
     /*
     
     Alamofire.request(.GET, url).validate().responseJSON{ response in

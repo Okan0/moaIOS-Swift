@@ -49,7 +49,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     private func handler(status: Bool?) -> Bool{
-        
         return status!
     }
     
@@ -66,61 +65,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 
                 return false
             }
-            
+            // Adresse der host URL setzen
             RestClient.hostUrl = host.text!
             let req = RestClient.connCheck().responseJSON {
                 response in
             }
-            
-//            _ = RestClient.authCheck().responseJSON {
-//                response in
-//                /*
-//                ( Array Beginn          ) Array Ende
-//                { Objekt beginn         } Objekt Ende
-//                , Seperatorzeichen
-//                ----------------------------------------------
-//                (
-//                    {
-//                        id = 1;
-//                        password = 1234;
-//                        roles = (
-//                            {
-//                                "role_id" = 1;
-//                                rolename = "manager-gui";
-//                            },
-//                            .......
-//                        )
-//                    },
-//                    ......
-//                )
-//                ----------------------------------------------
-//                */
-//                
-//                if let value = response.result.value {
-//                    
-//                    let json = JSON(value)
-//                    
-//                    for (var i : Int = 0; i < 3; i++ ){
-//                    print(json[i, "username"].stringValue)
-//                        
-//                        
-//                            print(json[i, "roles"].arrayValue)
-//
-//                    }
-//                    
-//                    
-//                    print("---------------------")
-//                    
-//                    
-//                    for (var i : Int = 0; i < 3; i++ ){
-//                        print(json[i, "username"]["roles"])
-//                    }
-//                    
-//                    //print("JSON:  \(JSOn)")
-//                }
-//        
-//            }
-            
             
             if  req.response?.statusCode != 200 {
                 let alert=UIAlertController(title: "Kein gültige Hostadresse!", message: "Bitte geben Sie eine gültige IP-Adresse ein", preferredStyle: UIAlertControllerStyle.Alert);
@@ -145,7 +94,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             login.host = host.text!
         }
     }
-
+    // Adressen, die zur Vorauswahl in der TableView stehen
     var ips = ["192.168.137.1","192.168.173.1"]
 }
 
